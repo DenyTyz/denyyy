@@ -56,7 +56,7 @@ const preview = (overrides = {}) => harness({ livePreview: true, ...overrides })
 /** Deployed: only the server can clear the `__Host-` cookie. */
 const deployed = (overrides = {}) => harness({ livePreview: false, ...overrides });
 
-// ── Live preview ───────────────────────────────────────────────────────────────
+// ── Live preview ─────────────────────────────────────────────────────────────
 
 test("preview: a successful sign-out clears the token, then redirects", async () => {
   const h = preview();
@@ -82,7 +82,6 @@ test("preview: a sign-out that throws synchronously still clears and redirects",
 });
 
 test("preview: a sign-out that never settles clears and redirects once the wait expires", async (t) => {
-  t.mock.timers.enable({ apis: ["setTimeout"] });
   const h = preview({ requestSignOut: hangs });
   const done = h.run();
 
@@ -108,7 +107,7 @@ test("preview: a stored bearer is still invalidated server-side", async () => {
   assert.equal(h.requests, 1);
 });
 
-// ── Deployed ───────────────────────────────────────────────────────────────────
+// ── Deployed ─────────────────────────────────────────────────────────────────
 // JS cannot delete the HttpOnly `__Host-` cookie and `cookieCache` keeps
 // serving the cached session, so an unconfirmed sign-out must NOT look like one.
 
