@@ -82,6 +82,7 @@ test("preview: a sign-out that throws synchronously still clears and redirects",
 });
 
 test("preview: a sign-out that never settles clears and redirects once the wait expires", async (t) => {
+  t.mock.timers.enable({ apis: ["setTimeout"] });
   const h = preview({ requestSignOut: hangs });
   const done = h.run();
 
