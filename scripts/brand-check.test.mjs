@@ -175,6 +175,7 @@ test("legacy png + site.json type still needs the X feed card", () => {
 });
 
 test("siteDeclaresOgTypeGame reads the site contract", () => {
+  const root = makeWorkspace();
   assert.equal(siteDeclaresOgTypeGame({ type: "x:game" }), true);
   assert.equal(siteDeclaresOgTypeGame({ type: "website" }), false);
   assert.equal(siteDeclaresOgTypeGame({}), false);
@@ -321,7 +322,7 @@ test("SKILL.md and AGENTS.md name the marker path and bound this script uses", (
 const PROHIBITION_SECTIONS = [
   {
     rel: ".grok/skills/og/SKILL.md",
-    label: '\u00a7 "Brand-asset pass"',
+    label: '§ "Brand-asset pass"',
     from: "## Brand-asset pass:",
     until: /\n## /,
   },
