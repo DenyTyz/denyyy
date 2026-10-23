@@ -10,3 +10,6 @@ artifacts
 *.log
 .grok/*
 !.grok/app-env.json
+public/og.jpg
+public/media/*.jpg
+public/**/*.png
